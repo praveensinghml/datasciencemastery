@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="ScriptsBundle">
+    <title>{{ post.title }}</title>
+    <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/et-line-fonts.css' %}">
+        <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/owl.style.css' %}">
+    <!-- =-=-=-=-=-=-= Google Fonts =-=-=-=-=-=-= -->
+    
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">
+    <!-- =-=-=-=-=-=-= Highliter Css =-=-=-=-=-=-= -->
+    <link type="text/css" rel="Stylesheet" href="{% static 'css/styles/shCoreDefault.css' %}" />
+    <!-- =-=-=-=-=-=-= Css Animation =-=-=-=-=-=-= -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/animate.min.css' %}" />
+    <!-- =-=-=-=-=-=-= Hover Dropdown =-=-=-=-=-=-= -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap-dropdownhover.min.css' %}" />
+    <!-- JavaScripts -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     -->
+     
+
+  </head>
+{% endblock head %}
+
+
+{% block content %}
+
+  <!-- =-=-=-=-=-=-= Main Area =-=-=-=-=-=-= -->
+<div class="main-content-area">
+
+    <!-- =-=-=-=-=-=-= Page Breadcrumb =-=-=-=-=-=-= -->
+    <section class="page-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-7 co-xs-12 text-left">
+            <h1>Contact Us</h1>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6 col-sm-5 co-xs-12 text-right">
+            <div class="bread">
+              <ol class="breadcrumb">
+                <li><a href="#">Home</a>
+                </li>
+                <li><a href="#">Pages</a>
+                </li>
+                <li class="active">Contact</li>
+              </ol>
+            </div>
+            <!-- end bread -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </section>
+
+    <!-- =-=-=-=-=-=-= Page Breadcrumb End =-=-=-=-=-=-= -->
+    <!-- =-=-=-=-=-=-= Contact Us  =-=-=-=-=-=-= -->
+    <section class="section-padding-80 white contact-us" id="contacts">
+      <div class="container">
+        <div class="row">
+    {% if msg %}
+    <div style="text-align: center; color: green;">
+        <h2>Thanks {{ msg }}!</h2>
+        <p>We have recieved your email and response shortly ... </p>
+    </div>
+    <br/>
+    {% else %}
+
+          <div class="col-sm-8 col-sm-8 col-xs-12">
+
+            <h2>Send a Message</h2>
+
+            <form id="contactForm" method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-6 formmargin">
+
+                  <div class="form-group">
+                    <input type="email" placeholder="Email" id="email" name="email" class="form-control" required="">
+
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" placeholder="Subject" id="subject" name="subject" class="form-control" required="">
+                  </div>
+
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <textarea cols="12" rows="8" placeholder="Message..." id="message" name="message" class="form-control" required=""></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <button id="yes" class="btn btn-primary" type="submit">Send Message</button>
+
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-4 col-sm-4 col-xs-12 contact-detail">
+
+            <h2>Contact Details</h2>
+
+            <div class="contact-info">
+              <p>Etiam sit amet orci eget eros faucibus tincidunt. Pellentesque commodo eros a enim. Etiam rhoncus. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras sagittis. </p>
+              <p>Vestibulum turpis sem, aliquet eget, lobortis pellentesque.</p>
+             
+            </div>
+            <!-- end links -->
+
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+    {% endif %}
+      </div>
+      <!-- end container -->
+    </section>
+    <!-- =-=-=-=-=-=-= Contact Us End =-=-=-=-=-=-= -->
+
+
+  </div>
+ <!-- =-=-=-=-=-=-= Main Area End =-=-=-=-=-=-= -->
+{% endblock content %}

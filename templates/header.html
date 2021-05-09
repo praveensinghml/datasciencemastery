@@ -1,0 +1,97 @@
+{% load static %}
+<!-- datasciencemastery.blog -->
+<!-- =-=-=-=-=-=-= PRELOADER =-=-=-=-=-=-= -->
+  <div class="preloader"><span class="preloader-gif"></span>
+  </div>
+  <!-- =-=-=-=-=-=-= HEADER =-=-=-=-=-=-= -->
+  <div class="top-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-4">
+				<ul class="top-nav nav-left">
+					<li><a href="/">Home</a>
+					</li>
+					<li class="hidden-xs"><a href="{% url 'post-list'%}">Blogs</a>
+					</li>
+					<li  class="hidden-xs"><a href="#">Contact Us</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-8">
+				<ul class="top-nav nav-right">
+				
+          {% if user.is_authenticated %}
+         
+					<li class="dropdown"> 
+						<a class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-animations="fadeInUp">
+							<img class="img-circle resize" alt="" src="{{ user.thumbnail.url }}">
+							<span class="hidden-xs small-padding">
+								<span> {{ user.get_username }}</span>
+							
+							</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'profile'%}"><i class=" icon-bargraph"></i> Dashboard</a></li>
+							<li><a href="{% url 'account_logout'%}"><i class="icon-lock"></i> Logout</a></li>
+						</ul>
+					 </li>
+           {% else %}
+           	<li><a href="{% url 'account_login'%}"><i class="fa fa-lock" aria-hidden="true"></i>Login</a>
+					</li>
+					<li><a href="{% url 'account_signup'%}"><i class="fa fa-user-plus" aria-hidden="true"></i>Signup</a>
+					</li>
+           {% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+  <!-- =-=-=-=-=-=-= HEADER Navigation =-=-=-=-=-=-= -->
+  <div class="navbar navbar-default">
+    <div class="container">
+      <!-- header -->
+      <div class="navbar-header">
+        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- logo -->
+        <div style="margin-left: -400px;">
+          <a href="/" class="navbar-brand">
+            <img class="img-responsive" alt="" src="{% static '/images/logo.png' %}">
+          </a>
+          <br/>
+          <br/>
+        </div>
+        <!-- search form -->
+      <table>
+        <tr>
+          <td>
+            <form role="search" action="{% url 'search' %}" class="navbar-form pull-left">
+              <div class="icon-addon addon-lg">
+                <input type="text" name="q" id="q" class="form-control" placeholder="What are you Looking for..">
+                <label title="email" rel="tooltip" class="glyphicon glyphicon-search" for="q"></label>
+              </div>
+            </form>
+          </td>
+          <td>
+          <!-- header end -->
+          {% if user.is_authenticated %}
+          <div class="btn-nav"><a href="{% url 'post-create'%}" class="btn btn-primary btn-small navbar-btn">Post Articles</a>
+          </div>
+          {% else %}
+          <div class="btn-nav">
+            <a href="{% url 'account_login' %}" class="btn btn-primary btn-small navbar-btn"> Login to Post Article</a>
+          </div>
+          {% endif %}
+          </td>
+          <td><div class="btn-nav"></div><a href="{% url 'post-list'%}" class="btn btn-danger btn-small navbar-btn">Browse Articles</a></div></td>
+        </tr>
+      </table>
+        
+        
+      </div>
+    </div>
+  </div>
+  <!-- HEADER Navigation End -->
