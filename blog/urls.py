@@ -5,6 +5,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView # new
 
 from posts.views import (
+    Activity_view,
     PracticeView,
     VoteView,
     IndexView,
@@ -18,7 +19,8 @@ from posts.views import (
     PostDeleteView,
     ContactView,
     upload,
-    user_dashboard  
+    user_dashboard,
+
     )
 from marketing.views import email_list_signup
 
@@ -41,6 +43,7 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('contact/', ContactView, name='contact'),
     path('vote/', VoteView, name='vote_post'),
+    path('activity/', Activity_view.as_view(), name='activity_view'),
     path('practice/', PracticeView, name='practice'),
     
     path('searchbycat/<category>/', blog_category, name='searchbycat'),

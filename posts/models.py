@@ -1,3 +1,4 @@
+from django.db.models.fields import related
 from tinymce.models import HTMLField
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -116,4 +117,12 @@ class Post(models.Model):
     @property
     def get_authordetails(self):
         return Author.objects.get(post=self)
+
+class Activity(models.Model):
+    Activity_name=models.CharField(max_length=100)        
+    Activity_message=models.CharField(max_length=600)
+    created_by=models.ForeignKey(User,on_delete=models.PROTECT)
+    created_at=models.DateTimeField(auto_now_add=True)
+    post=models.ForeignKey(Post,on_delete=models.PROTECT)
+    user=models.ForeignKey(User,on_delete=models.CASCADE ,related_name="own")
 

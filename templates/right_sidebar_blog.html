@@ -6,7 +6,11 @@
             <div class="side-bar">
               <div class="widget">
                 <div class="widget-image widget-image-sm" style="height: 220px;"> <img alt="image" src="{% static 'images/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg' %}">
+                  {% if author_details.profile_picture %}
                   <div class="widget-image-content text-center"> <img class="img-thumbnail" alt="avatar" src="{{ author_details.profile_picture.url }}">
+                    {% else %}
+                    <div class="widget-image-content text-center"> <img class="img-thumbnail" alt="avatar" src="{% static 'images/avatar5.png' %}">
+                    {% endif %}
                     <h2 class="widget-heading text-light"><strong>{{ author_details.authorname }}</strong></h2>
                     <h4 class="widget-heading text-light-op"><em>{{ author_details.desination }}</em></h4>
                   </div>

@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import CommentForm, PostForm
-from .models import Post, Author, PostView,Comment
+from .models import Post, Author, PostView,Comment,Activity
 from marketing.forms import EmailSignupForm
 from marketing.models import Signup
 from django.urls import reverse_lazy, reverse
@@ -43,6 +43,7 @@ def get_tags_count():
         .objects \
         .values('tags__title') \
         .annotate(Count('tags__title'))
+    print(queryset)    
     return queryset
 
 class SearchView(View):
@@ -338,6 +339,7 @@ class user_dashboard(View):
          author=get_author(request.user) 
          my_post_count=post_count(get_author(request.user))
          my_published_post=Post.objects.filter(author=author)
+         Activity_list=Activity.objects.filter(user=request.user)
          for x in my_published_post:
                com_count+= Comment.objects.filter(post=x).count()
                    
@@ -346,6 +348,7 @@ class user_dashboard(View):
             count += n.votes.count()
 
          context={
+                 'activity_list':Activity_list,
                  'author':author,
                  'total_votes':count,
                  'post_count':my_post_count,
@@ -353,6 +356,21 @@ class user_dashboard(View):
                  'total_comments':com_count}
          
          return render(request,'account/profile_temp.html',context) 
+
+
+class Activity_view(View):
+     def get(self,request):
+        Activity_list=Activity.objects.filter(user=request.user)
+
+       
+            
+       
+
+        context={
+                 'activity_list':Activity_list
+               }
+         
+        return render(request,'account/profile_temp.html',context) 
 
 def post_count(user_id):
   my_post=Post.objects.filter(author=user_id).count()

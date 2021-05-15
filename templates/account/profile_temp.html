@@ -126,6 +126,8 @@
                   <div class="profile-avatar">
                   {% if author.profile_picture %}
                     <span><img class="img-responsive img-circle" alt="" src="{{author.profile_picture.url}}"></span>
+                    {% else %}
+                     <span><img class="img-responsive img-circle" alt="add image" src="{% static 'images/avatar5.png' %}"> </span>
                   {% endif %}
                     <div class="profile-name">
                       <h3>{{user}}</h3>
@@ -161,8 +163,7 @@
                   <ul class="profile-connect">
                     <li><a title="" href="#">Follow</a>
                     </li>
-                    <li><a title="" href="#">Hire Me</a>
-                    </li>
+                   
                   </ul>
                 </div>
               </div>
@@ -190,6 +191,7 @@
 
             <div class="timeline-container">
               <ul>
+              {% if my_published_post %}
               {% for post in my_published_post %}
                 <li>
                   <div class="timeline">
@@ -221,9 +223,12 @@
                   </div>
                 </li>
                 {% endfor %}
-               
+                          
              
               </ul>
+               {% else %}
+                 <h3> No Posts</h3>
+                 {% endif %}    
             </div>
 
             <!-- Pagination View More -->
