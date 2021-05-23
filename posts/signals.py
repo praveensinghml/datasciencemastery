@@ -17,7 +17,7 @@ def get_post_activity(sender,created,instance, **kwargs):
     else:
         Activity.objects.create(Activity_name="vote",Activity_message="votes",created_by=instance.author.user,post=Post.objects.get(id=instance.id),user=instance.author.user)
 
-# @receiver(post_save, sender=PostView)
-# def get_comment_activity(sender,created,instance, **kwargs):
-#     if created:
-#         Activity.objects.create(Activity_name="views",Activity_message="some one views",created_by=instance.user,post=instance.post,user=instance.post.author.user)    
+@receiver(post_save, sender=PostView)
+def get_comment_activity(sender,created,instance, **kwargs):
+    if created:
+        Activity.objects.create(Activity_name="view",Activity_message="some one views",created_by=instance.user,post=instance.post,user=instance.post.author.user)    
