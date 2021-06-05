@@ -1,0 +1,479 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="ScriptsBundle">
+    <title>DataScience Mastery</title>
+    <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+    <link rel="stylesheet" href="{% static 'css/et-line-fonts.css' %}">
+        <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/owl.style.css' %}">
+    <!-- =-=-=-=-=-=-= Google Fonts =-=-=-=-=-=-= -->
+    
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">
+    <!-- =-=-=-=-=-=-= Highliter Css =-=-=-=-=-=-= -->
+    <link type="text/css" rel="Stylesheet" href="{% static 'css/styles/shCoreDefault.css' %}" />
+    <!-- =-=-=-=-=-=-= Css Animation =-=-=-=-=-=-= -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/animate.min.css' %}" />
+    <!-- =-=-=-=-=-=-= Hover Dropdown =-=-=-=-=-=-= -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap-dropdownhover.min.css' %}" />
+    <!-- JavaScripts -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     -->
+
+    <meta name="title" content="Data Science Mastery">
+    <meta name="description" content="Free articles and blogger websiet for machine learning and deep learning, django, python">
+    <meta name="keywords" content="python, flask, streamlit, C#, .Net, machine learning, deep learning, django, blog, article, software">
+    <meta name="robots" content="index, nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+    <meta name="author" content="Praveen Singh">
+
+    <meta property="og:site_name" content="Learn DataScience and Machine learning by DataScienceMastery"/>
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Data Science Mastery and Machine Learning" />
+    <meta property="og:description" content="Free articles and blogger websiet for machine learning and deep learning, django, python" />
+    <meta property="og:url" content="https://DataScienceMastery.in"/>
+    <meta property="article:tag" content="Data Science"/>
+    <meta property="article:tag" content="machine learning" />
+    <meta property="article:tag" content="deep learning" />
+    <meta property="article:tag" content="beginner articles for machine learning" />
+    <meta property="article:tag" content="beginner articles for deep learning" />
+    <meta property="article:tag" content="beginner and advance for python" />
+    <meta property="article:tag" content="beginner and advance for django" />
+    <meta property="article:tag" content="beginner and advance for flask" />
+    <meta property="article:tag" content="free a lot of tools for machine learning" />
+    <meta property="article:tag" content="EDA and Hyper parameter tunning" />
+    <meta property="article:tag" content="streamlit blog and tutorial for streamlit" />
+   
+  </head>
+{% endblock head %}
+
+
+{% block content %}
+
+
+<body>
+ 
+  <!-- =-=-=-=-=-=-= Main Area =-=-=-=-=-=-= -->
+  <div class="main-content-area">
+
+    <!-- =-=-=-=-=-=-= Page Breadcrumb =-=-=-=-=-=-= -->
+    <section class="page-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-7 col-xs-12 text-left">
+            <h1>John Doe</h1>
+          </div>
+          <!-- end col -->
+          <div class="col-md-6 col-sm-5 col-xs-12 text-right">
+            <div class="bread">
+              <ol class="breadcrumb">
+                <li><a href="#">Home</a>
+                </li>
+                <li><a href="#">Pages</a>
+                </li>
+                <li class="active">Profile</li>
+              </ol>
+            </div>
+            <!-- end bread -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </section>
+
+    <!-- =-=-=-=-=-=-= Page Breadcrumb End =-=-=-=-=-=-= -->
+
+    <!-- =-=-=-=-=-=-= User Profile =-=-=-=-=-=-= -->
+    <section id="user-profile" class="user-profile parallex">
+      <div class="container">
+        <!-- Row -->
+        <div class="row">
+
+          <div class="col-md-12 col-xs-12 col-sm-12">
+            <div class="profile-sec ">
+              <div class="profile-head">
+                <div class="col-md-6 col-xs-12 col-sm-6 no-padding">
+                  <div class="profile-avatar">
+                    <span><img class="img-responsive img-circle" alt="" src="images/authors/author-large.jpg"></span>
+                    <div class="profile-name">
+                      <h3>User Profile</h3>
+                      <i>Creative Graphic Designer</i>
+                      <ul class="social-btns">
+                        <li><a href="#" title=""><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#" title=""><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li><a href="#" title=""><i class="fa fa-twitter"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-6 no-padding">
+                  <ul class="profile-count">
+                    <li>171<i>Followers</i>
+                    </li>
+                    <li>13,725<i>Experience</i>
+                    </li>
+                    <li>120<i>Questions</i>
+                    </li>
+                  </ul>
+                  <ul class="profile-connect">
+                    <li><a title="" href="#">Follow</a>
+                    </li>
+                    <li><a title="" href="#">Hire Me</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Profile Sec -->
+          </div>
+
+        </div>
+        <!-- Row End -->
+      </div>
+      <!-- end container -->
+    </section>
+
+    <!-- =-=-=-=-=-=-= User Profile end =-=-=-=-=-=-= -->
+    
+ <!-- =-=-=-=-=-=-= User Form Settings =-=-=-=-=-=-= -->
+    <section class="section-padding-80" id="login">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+
+            <div class="box-panel">
+
+              <form>
+                <div class="form-group">
+                  <label>Upload Image</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp">
+                </span>
+                    </span>
+                    <input type="text" class="form-control" readonly>
+                  </div>
+                  <img id="img-upload" src="images/1.jpg" alt="" />
+                </div>
+
+                <button class="btn btn-primary btn-lg">Change Image</button>
+
+              </form>
+
+            </div>
+          </div>
+
+          <div class="col-md-8">
+
+            <div class="box-panel">
+
+              <!-- form login -->
+              <form>
+                <div class="form-group">
+                  <label>User Name</label>
+                  <input type="text" placeholder="John Doe" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" placeholder="Your Email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" placeholder="Your Password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" placeholder="Your Password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="checkbox flat-checkbox">
+                        <label>
+                          <input type="checkbox">
+                          <span class="fa fa-check"></span> Make My Profile Private?
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <button class="btn btn-primary btn-lg">Update My Profile</button>
+
+              </form>
+              <!-- form login -->
+
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!-- end container -->
+    </section>
+ <!-- =-=-=-=-=-=-= User Form Settings End =-=-=-=-=-=-= -->
+ 
+    <!-- =-=-=-=-=-=-= Our Clients =-=-=-=-=-=-= -->
+    <section class="custom-padding white" id="clients">
+      <div class="container">
+
+        <!-- Row -->
+        <div class="row">
+
+          <!-- col-md-2 client-block -->
+          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
+
+            <!-- client-item client-item-style-2 -->
+            <div class="client-item client-item-style-2">
+              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_5.png"> </a>
+            </div>
+            <!-- /client-item client-item-style-2 -->
+
+          </div>
+          <!-- /col-md-2 client-block -->
+
+          <!-- col-md-2 client-block -->
+          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
+
+            <!-- client-item client-item-style-2 -->
+            <div class="client-item client-item-style-2">
+              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_6.png"> </a>
+            </div>
+            <!-- /client-item client-item-style-2 -->
+
+          </div>
+          <!-- /col-md-2 client-block -->
+
+          <!-- col-md-2 client-block -->
+          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
+
+            <!-- client-item client-item-style-2 -->
+            <div class="client-item client-item-style-2">
+              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_7.png"> </a>
+            </div>
+            <!-- /client-item client-item-style-2 -->
+
+          </div>
+          <!-- /col-md-2 client-block -->
+
+          <!-- col-md-2 client-block -->
+          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
+
+            <!-- client-item client-item-style-2 -->
+            <div class="client-item client-item-style-2">
+              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_8.png"> </a>
+            </div>
+            <!-- /client-item client-item-style-2 -->
+
+          </div>
+          <!-- /col-md-2 client-block -->
+
+          <!-- col-md-2 client-block -->
+          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
+
+            <!-- client-item client-item-style-2 -->
+            <div class="client-item client-item-style-2">
+              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_9.png"> </a>
+            </div>
+            <!-- /client-item client-item-style-2 -->
+
+          </div>
+          <!-- /col-md-2 client-block -->
+
+          <!-- col-md-2 client-block -->
+          <div class="col-md-2 col-xs-6 col-sm-4 client-block">
+
+            <!-- client-item client-item-style-2 -->
+            <div class="client-item client-item-style-2">
+              <a title="Client Logo" href="#"> <img alt="Clients Logo" src="images/clients/client_10.png"> </a>
+            </div>
+            <!-- /client-item client-item-style-2 -->
+
+          </div>
+          <!-- /col-md-2 client-block -->
+
+        </div>
+        <!-- Row End -->
+
+      </div>
+      <!-- end container -->
+    </section>
+    <!-- =-=-=-=-=-=-= Our Clients -end =-=-=-=-=-=-= -->
+
+  </div>
+  <!-- =-=-=-=-=-=-= Main Area End =-=-=-=-=-=-= -->
+
+  <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+  <footer class="footer-area">
+
+    <!--Footer Upper-->
+    <div class="footer-content">
+      <div class="container">
+        <div class="row clearfix">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="footer-content text-center no-padding margin-bottom-40">
+              <div class="logo-footer"><img id="logo-footer" class="center-block" src="images/logo-1.png" alt="">
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus illo vel dolorum soluta consectetur doloribus sit. Delectus non tenetur odit dicta vitae debitis suscipit doloribus. Lorem ipsum dolor sit amet, illo vel.</p>
+            </div>
+          </div>
+
+          <!--Two 4th column-->
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row clearfix">
+              <div class="col-lg-7 col-sm-6 col-xs-12 column">
+                <div class="footer-widget about-widget">
+                  <h2>Our Addres</h2>
+                  <ul class="contact-info">
+                    <li><span class="icon fa fa-map-marker"></span> 60 Link Road Lhr. Pakistan 54770</li>
+                    <li><span class="icon fa fa-phone"></span> (042) 1234567890</li>
+                    <li><span class="icon fa fa-map-marker"></span> contant@scriptsbundle.com</li>
+                    <li><span class="icon fa fa-fax"></span> (042) 1234 7777</li>
+                  </ul>
+                  <div class="social-links-two clearfix">
+                    <a href="#" class="facebook img-circle">
+                      <span class="fa fa-facebook-f"></span>
+                    </a>
+                    <a href="#" class="twitter img-circle">
+                      <span class="fa fa-twitter"></span>
+                    </a>
+                    <a href="#" class="google-plus img-circle">
+                      <span class="fa fa-google-plus"></span>
+                    </a>
+                    <a href="#" class="linkedin img-circle">
+                      <span class="fa fa-pinterest-p"></span>
+                    </a>
+                    <a href="#" class="linkedin img-circle">
+                      <span class="fa fa-linkedin"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!--Footer Column-->
+              <div class="col-lg-5 col-sm-6 col-xs-12 column">
+                <h2>Our Service</h2>
+                <div class="footer-widget links-widget">
+                  <ul>
+                    <li><a href="#">Web Development</a>
+                    </li>
+                    <li><a href="#">Web Designing</a>
+                    </li>
+                    <li><a href="#">Android Development</a>
+                    </li>
+                    <li><a href="#">Theme Development</a>
+                    </li>
+                    <li><a href="#">IOS Development</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Two 4th column End-->
+
+          <!--Two 4th column-->
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row clearfix">
+              <!--Footer Column-->
+              <div class="col-lg-7 col-sm-6 col-xs-12 column">
+                <div class="footer-widget news-widget">
+                  <h2>Latest News</h2>
+
+                  <!--News Post-->
+                  <div class="news-post">
+                    <div class="icon"></div>
+                    <div class="news-content">
+                      <figure class="image-thumb"><img src="images/blog/popular-2.jpg" alt="">
+                      </figure>
+                      <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
+                    </div>
+                    <div class="time">July 2, 2014</div>
+                  </div>
+
+                  <!--News Post-->
+                  <div class="news-post">
+                    <div class="icon"></div>
+                    <div class="news-content">
+                      <figure class="image-thumb"><img src="images/blog/popular-1.jpg" alt="">
+                      </figure>
+                      <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
+                    </div>
+                    <div class="time">July 2, 2014</div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Footer Column-->
+              <div class="col-lg-5 col-sm-6 col-xs-12 column">
+                <div class="footer-widget links-widget">
+                  <h2>Site Links</h2>
+                  <ul>
+                    <li><a href="login.html">Login</a>
+                    </li>
+                    <li><a href="register.html">Register</a>
+                    </li>
+                    <li><a href="listing.html">Listing</a>
+                    </li>
+                    <li><a href="blog.html">Blog</a>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Two 4th column End-->
+
+        </div>
+      </div>
+    </div>
+
+    <!--Footer Bottom-->
+    <div class="footer-copyright">
+      <div class="auto-container clearfix">
+        <!--Copyright-->
+        <div class="copyright text-center">Copyright 2016 &copy; Theme Created By <a target="_blank" href="http://themeforest.net/user/scriptsbundle/portfolio">Scriptsbundle</a> All Rights Reserved</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+{% endblock content %}
+</html>

@@ -64,7 +64,10 @@ class Post(models.Model):
     categories = models.ManyToManyField(Category)
     featured = models.BooleanField()
     votes = models.ManyToManyField(User, related_name='blog_posts', blank=True)
+    post_choice=(('publish','publish'),
+                ('draft','draft'))
     tags =  models.ManyToManyField(Tags)
+    status=models.CharField(choices=post_choice,max_length=8,default='draft')
     previous_post = models.ForeignKey(
         'self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)
     next_post = models.ForeignKey(

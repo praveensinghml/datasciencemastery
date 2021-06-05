@@ -18,8 +18,10 @@ from posts.views import (
     PostUpdateView,
     PostDeleteView,
     ContactView,
+    profile_setting,
     upload,
     user_dashboard,
+    draft_publish,
 
     )
 from marketing.views import email_list_signup
@@ -41,6 +43,7 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     # path('post/<id>/delete/', post_delete, name='post-delete'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
+    path('post/<int:pk>/publish/', draft_publish.as_view(), name='draft-publish'),
     path('contact/', ContactView, name='contact'),
     path('vote/', VoteView, name='vote_post'),
     path('activity/', Activity_view.as_view(), name='activity_view'),
@@ -53,7 +56,11 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/',
          user_dashboard.as_view(),
-         name='profile')
+         name='profile'),
+     path('accounts/profile_setting/',
+         profile_setting,
+         name='profile_setting')     
+
 
 ]
 

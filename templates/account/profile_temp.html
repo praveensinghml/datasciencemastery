@@ -146,13 +146,16 @@
                 <div class="col-md-6 col-xs-12 col-sm-6 no-padding">
                   <ul class="profile-count">
                   {% if my_published_post %}
-                    <li>{{post_count}}<i>Comments</i>
+                    <li>{{total_comments}}<i>Comments</i>
                     </li>
                     <li>{{total_votes}}<i>Votes</i>
                     </li>
-                    <li>{{total_comments}}<i>Total Posts</i>
+                    <li>{{post_count}}<i>Total Posts</i>
+                    </li>
+                      <li>{{draft_count}}<i>Total Drafts</i>
+                      </li>
                    {% else %} 
-                   <li>no comments<i>Comments</i>
+                   <li><p>no comments</p><i>Comments</i>
                     </li>
                     <li>no votes<i>Votes</i>
                     </li>
@@ -161,7 +164,7 @@
                     </li>
                   </ul>
                   <ul class="profile-connect">
-                    <li><a title="" href="#">Follow</a>
+                    <li><a title="" href="/accounts/profile_setting">Edit Profile</a>
                     </li>
                    
                   </ul>
@@ -190,6 +193,7 @@
           <div class="col-md-12">
 
             <div class="timeline-container" id="post_view">
+            <h1> My Posts </h1>
               <ul>
               {% if my_published_post %}
               {% for post in my_published_post %}
@@ -206,11 +210,11 @@
                         <div class="social-share">
                           <a title=""><i class="fa fa-share-alt"></i></a>
                           <ul class="social-btns">
-                            <li><a href="#" data-placement="left" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.datasciencemastery.in{{ post.get_absolute_url }}" target="_blank"" target="_blank"" data-placement="left" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
                             </li>
-                            <li><a href="#" data-placement="left" data-toggle="tooltip" title="Google"><i class="fa fa-google-plus"></i></a>
+                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.datasciencemastery.in{{ post.get_absolute_url }}" data-placement="left" data-toggle="tooltip" title="Linkedin"><i class="fa fa-linkedin"></i></a>
                             </li>
-                            <li><a href="#" data-placement="left" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <li><a href="http://www.twitter.com/share?url=http://www.datasciencemastery.in{{ post.get_absolute_url }}" data-placement="left" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a>
                             </li>
                           </ul>
                         </div>
@@ -339,22 +343,14 @@
                   <div class="timeline">
                     <div class="user-timeline">
                     {% if author.profile_picture %}
-                      <span><img alt="" src="{{author.profile_picture.url}}"></span>
+                      <span><img alt="{{author.authorname}}" src="{{author.profile_picture.url}}"></span>
                      {% endif %} 
                     </div>
                     <div class="timeline-detail">
                       <div class="timeline-head">
                         <h3><a href="{{ activity.post.get_absolute_url }}">{{activity.created_by}} </a> viewed your post"{{activity.post}}"<span>{{ activity.created_at|timesince }} ago</span></h3>
                         <div class="social-share">
-                          <a title=""><i class="fa fa-share-alt"></i></a>
-                          <ul class="social-btns">
-                            <li><a href="#" data-placement="left" data-toggle="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#" data-placement="left" data-toggle="tooltip" title="Google"><i class="fa fa-google-plus"></i></a>
-                            </li>
-                            <li><a href="#" data-placement="left" data-toggle="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            </li>
-                          </ul>
+                        <p>Edit</p>
                         </div>
                       </div>
                       <div class="timeline-content">
@@ -373,10 +369,50 @@
                  <h3> No Activities</h3>
                  {% endif %}    
             </div>
+            <div class="timeline-container" id="Drafts">
+              <ul>
+              {% if my_drafts %}
+              {% for post in my_drafts %}
+                <li>
+                  <div class="timeline">
+                    <div class="user-timeline">
+                    {% if author.profile_picture %}
+                      <span><img alt="" src="{{author.profile_picture.url}}"></span>
+                     {% endif %} 
+                    </div>
+                    <div class="timeline-detail">
+                      <div class="timeline-head">
+                        <h3><a href="{{ post.get_absolute_url }}">{{post.title}}</a><span>{{ post.timestamp|timesince }} ago</span></h3>
+                        <div class="social-share">
+                          <a title="Edit Post"><i class="fa fa-edit"></i></a>
+                          <ul class="social-btns">
+                            <li><a  href="{% url 'post-update' pk=post.pk %}" data-placement="left" data-toggle="tooltip" title="Facebook"><h5 style="background-color: rgb(201, 76, 76); display:inline;" >Edit..</h5></a>
+                            </li>
+                            <li><a href="{% url 'draft-publish' pk=post.pk %}" data-placement="left" data-toggle="tooltip" title="Google"><h5 style="background-color: rgb(201, 76, 76)">Publish</h5></a>
+                            </li>
+                            <li><a href="{% url 'post-delete' pk=post.pk %}" data-placement="left" data-toggle="tooltip" title="Twitter"><h5 style="background-color: rgb(201, 76, 76)">Delete</h5></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="timeline-content">
+                      <p> {{ post.overview|linebreaks|truncatechars:200 }}</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+               {% else %}
+                 <h3> No Drafts Saved</h3>
+                 {% endif %}    
+            </div>
          
             <!-- Pagination View More -->
             <div class="text-center clearfix">
               <button class="btn btn-primary btn-lg" id="view_activity">View All Activities</button>
+              <button class="btn btn-primary btn-lg" id="view_drafts">View Drafts</button>
             </div>
             <!-- Pagination View More End -->
 
@@ -395,30 +431,39 @@
  
   <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
  <script>
- console.log('nsniansis iwq')
+ 
  Activity_div=document.getElementById('Activity')
  document.getElementById('view_activity').addEventListener('click',show_activity)
+ document.getElementById('view_drafts').addEventListener('click',show_drafts)
  post_div=document.getElementById('post_view')
- 
+ draft_div=document.getElementById('Drafts')
+ draft_div.style.display = "none"; 
  Activity_div.style.display = "none";
  function show_activity()
  {
+   draft_div.style.display = "none"; 
    btn=document.getElementById('view_activity').textContent;
    if (btn=='View All Activities')
    {
-   console.log(btn)
+   
   btn=document.getElementById('view_activity')
   btn.innerHTML="show my posts"
   post_div.style.display="none";
   Activity_div.style.display = "block";
  }
   if(btn=='show my posts'){
-    console.log(btn)
+  
   btn=document.getElementById('view_activity')
   btn.innerHTML="View All Activities"
   post_div.style.display="block";
   Activity_div.style.display = "none";
   }
+ }
+ function show_drafts()
+ {
+  post_div.style.display="none";
+  Activity_div.style.display = "none"; 
+  draft_div.style.display = "block"; 
  }
 
 </script>

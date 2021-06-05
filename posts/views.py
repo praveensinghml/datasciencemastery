@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic.base import RedirectView
 
 from .forms import CommentForm, PostForm
 from .models import Post, Author, PostView,Comment,Activity
@@ -43,7 +44,7 @@ def get_tags_count():
         .objects \
         .values('tags__title') \
         .annotate(Count('tags__title'))
-    print(queryset)    
+        
     return queryset
 
 class SearchView(View):
@@ -178,12 +179,19 @@ class PostListView(ListView):
     template_name = 'blog.html'
     context_object_name = 'queryset'
     paginate_by =2
-
+    def get_queryset(self):
+        qs=Post.objects.filter(author=get_author(self.request.user),status="publish")
+       
+        for x in qs:
+            print(x)
+      
+        return qs
     def get_context_data(self, **kwargs):
         category_count = get_category_count()
         most_recent = Post.objects.filter(featured=True).order_by('-timestamp')[:3]
         tags = get_tags_count()
         context = super().get_context_data(**kwargs)
+        # context['my_posts']=self.get_posts()
         context['most_related'] = most_recent
         context['page_request_var'] = "page"
         context['category_count'] = category_count
@@ -191,7 +199,7 @@ class PostListView(ListView):
         context['form'] = self.form
         return context
 
-
+ 
 
 class PostDetailView(DetailView):
     model = Post
@@ -254,7 +262,7 @@ class PostCreateView(CreateView):
     model = Post
     template_name = 'post_create.html'
     form_class = PostForm
-
+ 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Create'
@@ -274,7 +282,7 @@ class PostCreateView(CreateView):
 
 
 
- 
+
 
 def upload(request):
     try:
@@ -335,10 +343,11 @@ class user_dashboard(View):
      def get(self,request):
          count=0
          com_count=0 
-         user=request.user
+       
          author=get_author(request.user) 
-         my_post_count=post_count(get_author(request.user))
-         my_published_post=Post.objects.filter(author=author)
+       
+         my_published_post=Post.objects.filter(author=author,status='publish')
+         my_drafts=Post.objects.filter(author=author,status='draft')
          Activity_list=Activity.objects.filter(user=request.user)
          for x in my_published_post:
                com_count+= Comment.objects.filter(post=x).count()
@@ -351,13 +360,22 @@ class user_dashboard(View):
                  'activity_list':Activity_list,
                  'author':author,
                  'total_votes':count,
-                 'post_count':my_post_count,
+                 'post_count':my_published_post.count(),
+                 'draft_count':my_drafts.count(),
                  'my_published_post':my_published_post,
+                 'my_drafts':my_drafts,
                  'total_comments':com_count}
          
          return render(request,'account/profile_temp.html',context) 
 
-
+class draft_publish(View):
+     def get(self,request,pk):
+       instance = get_object_or_404(Post, id=pk)
+       url=instance.get_absolute_url()
+       instance.status='publish'
+       instance.save()
+       
+       return redirect(url)
 class Activity_view(View):
      def get(self,request):
         Activity_list=Activity.objects.filter(user=request.user)
@@ -373,8 +391,9 @@ class Activity_view(View):
         return render(request,'account/profile_temp.html',context) 
 
 def post_count(user_id):
-  my_post=Post.objects.filter(author=user_id).count()
-  return my_post
+  my_post=Post.objects.filter(author=user_id,status='publish').count()
+  draft_post=Post.objects.filter(author=user_id,status='draft').count()
+  return my_post,draft_post
 
 def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
@@ -385,3 +404,10 @@ def PracticeView(request):
     message_email = ""
     if request.method == 'GET':
         return render(request, "practice.html")
+
+def profile_setting(request):
+    if request.method == 'GET':
+        return render(request, "account/profile-setting.html")        
+    if request.method=='POST':
+        
+        return RedirectView('user_dashboard')
